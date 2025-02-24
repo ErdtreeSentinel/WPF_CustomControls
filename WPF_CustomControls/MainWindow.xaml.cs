@@ -35,5 +35,16 @@ namespace WPF_CustomControls
             // Здесь размещаем логику для перехода вперёд
             MessageBox.Show("Нажата кнопка 'Вперёд'");
         }
+
+        // Обработчик события Click для SettingsCard
+        private void CCC(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Карточка нажата!");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("UI, размещенные внутри этого блока, также может поддерживать связывание данных в обоих направлениях (Mode=TwoWay)");
+        }
     }
 }

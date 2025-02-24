@@ -28,32 +28,69 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
             <StackPanel x:Name="RootFrame" Orientation="Horizontal">
                 <TextBlock Text="Нажми на " />
                 <controls:HyperLinkText NavigateURI="https://github.com/ErdtreeSentinel/WPF_CustomsControls" Text="ссылку" />
             </StackPanel>
-            <controls:SettingsCard
-                Grid.Row="1"
-                Icon="&#xE790;"
-                ShowIcon="True">
-                <controls:SettingsCard.Header>
-                    <TextBlock>Заголовок</TextBlock>
-                </controls:SettingsCard.Header>
-                <controls:SettingsCard.Description>
-                    <TextBlock>Описание</TextBlock>
-                </controls:SettingsCard.Description>
-                <controls:SettingsCard.Content>
-                    <ComboBox
-                        MinWidth="200"
-                        AutomationProperties.Name="Change ThemeMode"
-                        SelectedIndex="2">
-                        <ComboBoxItem Content="Light" />
-                        <ComboBoxItem Content="Dark" />
-                        <ComboBoxItem Content="Use system setting" />
-                    </ComboBox>
-                </controls:SettingsCard.Content>
-            </controls:SettingsCard>
 
+            <StackPanel
+                Grid.Row="1"
+                MaxWidth="1000"
+                Margin="0,10,0,0"
+                Orientation="Vertical">
+                <controls:SettingsCard
+                    Description="Это описание карточки, по умолчанию оно более 'акцентное', основным является название. Если нужно переопределить стиль для описани - можно задавать содержимое для описание внутри &lt;SettingsCard.Description&gt; через UI"
+                    Header="Это сама обычная карточка"
+                    HeaderFontSize="16" Icon="&#xE724;">
+                    <controls:SettingsCard.Content>
+                        <Button Click="Button_Click" Style="{DynamicResource AccentButtonStyle}">Это кнопка содержимое</Button>
+                    </controls:SettingsCard.Content>
+                </controls:SettingsCard>
+
+                <controls:SettingsCard
+                    Margin="0,10,0,0"
+                    HeaderFontSize="18"
+                    ShowIcon="False">
+                    <controls:SettingsCard.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontWeight="Bold" Text="Профиль" />
+                            <TextBlock Opacity="0.7" Text=" (Администратор)" />
+                        </StackPanel>
+                    </controls:SettingsCard.Header>
+                    <controls:SettingsCard.Description>
+                        <TextBlock Foreground="Gray" Text="Настройки пользователя" />
+                    </controls:SettingsCard.Description>
+                    <TextBox Width="150" Text="Введите имя" />
+                </controls:SettingsCard>
+
+                <controls:SettingsCard
+                    Margin="0,10,0,0"
+                    Click="CCC"
+                    Description="Карточка с обработкой клика"
+                    Header="Кликни меня"
+                    IsClickEnabled="True" />
+
+                <controls:SettingsCard
+                    Margin="0,10,0,0"
+                    HeaderFontSize="14"
+                    Icon="&#xE9D2;"
+                    ShowIcon="True">
+                    <controls:SettingsCard.Header>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontWeight="Bold" Text="Системные параметры" />
+                            <TextBlock
+                                FontStyle="Italic"
+                                Opacity="0.8"
+                                Text="Обновление и безопасность" />
+                        </StackPanel>
+                    </controls:SettingsCard.Header>
+                    <StackPanel>
+                        <CheckBox Content="Автообновление" IsChecked="True" />
+                        <CheckBox Content="Разрешить фоновую синхронизацию" />
+                    </StackPanel>
+                </controls:SettingsCard>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

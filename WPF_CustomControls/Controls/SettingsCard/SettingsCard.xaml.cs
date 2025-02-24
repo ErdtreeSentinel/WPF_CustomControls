@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPF_CustomControls.Controls;
 
@@ -25,16 +14,25 @@ public partial class SettingsCard : UserControl
         InitializeComponent();
     }
 
+    // Добавьте этот код после уже существующих свойств
+    public static readonly DependencyProperty HeaderFontSizeProperty =
+        DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(SettingsCard), new PropertyMetadata(14.0));
+
+    public double HeaderFontSize
+    {
+        get => (double)GetValue(HeaderFontSizeProperty);
+        set => SetValue(HeaderFontSizeProperty, value);
+    }
+
     // Свойство для иконки (например, строка с символом из специального шрифта)
     public static readonly DependencyProperty IconProperty =
-        DependencyProperty.Register("Icon", typeof(string), typeof(SettingsCard), new PropertyMetadata("&#xE790;"));
+        DependencyProperty.Register("Icon", typeof(string), typeof(SettingsCard), new PropertyMetadata(string.Empty));
 
     public string Icon
     {
         get => (string)GetValue(IconProperty);
         set => SetValue(IconProperty, value);
     }
-
 
     public static readonly DependencyProperty ShowIconProperty =
     DependencyProperty.Register(nameof(ShowIcon), typeof(bool), typeof(SettingsCard), new PropertyMetadata(true));
@@ -45,20 +43,18 @@ public partial class SettingsCard : UserControl
         set => SetValue(ShowIconProperty, value);
     }
 
-    // Header как объект (можно задать как строку или UIElement)
+    // Header как объект (можно задать как строку или вложенный элемент)
     public static readonly DependencyProperty HeaderProperty =
         DependencyProperty.Register("Header", typeof(object), typeof(SettingsCard), new PropertyMetadata(null));
-
     public object Header
     {
         get => GetValue(HeaderProperty);
         set => SetValue(HeaderProperty, value);
     }
 
-    // Description как объект (можно задать как строку или UIElement)
+    // Description как объект
     public static readonly DependencyProperty DescriptionProperty =
         DependencyProperty.Register("Description", typeof(object), typeof(SettingsCard), new PropertyMetadata(null));
-
     public object Description
     {
         get => GetValue(DescriptionProperty);
@@ -74,4 +70,29 @@ public partial class SettingsCard : UserControl
         get => GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
     }
+
+    #region клик по карточке
+
+    // Новое свойство IsClickEnabled
+    public static readonly DependencyProperty IsClickEnabledProperty =
+        DependencyProperty.Register("IsClickEnabled", typeof(bool), typeof(SettingsCard), new PropertyMetadata(false));
+
+    public bool IsClickEnabled
+    {
+        get => (bool)GetValue(IsClickEnabledProperty);
+        set => SetValue(IsClickEnabledProperty, value);
+    }
+
+    // Новое событие Click
+    public event RoutedEventHandler Click;
+
+    // Обработчик клика по карточке
+    private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    {
+        if (IsClickEnabled && Click != null)
+        {
+            Click(this, new RoutedEventArgs());
+        }
+    }
+    #endregion
 }
