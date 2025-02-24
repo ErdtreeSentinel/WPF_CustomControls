@@ -84,14 +84,14 @@ public partial class SettingsCard : UserControl
     }
 
     // Новое событие Click
-    public event RoutedEventHandler Click;
+    public event RoutedEventHandler? Click;
 
     // Обработчик клика по карточке
     private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
         if (IsClickEnabled && Click != null)
         {
-            Click(this, new RoutedEventArgs());
+            Click?.Invoke(this, new RoutedEventArgs());
         }
     }
     #endregion
