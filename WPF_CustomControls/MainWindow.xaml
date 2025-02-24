@@ -92,6 +92,31 @@
                         <CheckBox Content="Разрешить фоновую синхронизацию" />
                     </StackPanel>
                 </controls:SettingsCard>
+
+                <controls:SettingsExpander
+                    Description="БББББ"
+                    Header="АААА"
+                    Icon="&#xE716;"
+                    IsEnabled="True">
+                    <controls:SettingsCard
+                        HeaderFontSize="14"
+                        Icon="&#xE9D2;"
+                        ShowIcon="True">
+                        <controls:SettingsCard.Header>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold" Text="Системные параметры" />
+                                <TextBlock
+                                    FontStyle="Italic"
+                                    Opacity="0.8"
+                                    Text="Обновление и безопасность" />
+                            </StackPanel>
+                        </controls:SettingsCard.Header>
+                        <StackPanel>
+                            <CheckBox Content="Автообновление" IsChecked="True" />
+                            <CheckBox Content="Разрешить фоновую синхронизацию" />
+                        </StackPanel>
+                    </controls:SettingsCard>
+                </controls:SettingsExpander>
             </StackPanel>
         </Grid>
     </Grid>
