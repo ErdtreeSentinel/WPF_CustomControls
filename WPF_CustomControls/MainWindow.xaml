@@ -31,7 +31,7 @@
 
             <StackPanel x:Name="RootFrame" Orientation="Horizontal">
                 <TextBlock Text="Нажми на " />
-                <controls:HyperLinkText NavigateURI="https://github.com/ErdtreeSentinel/WPF_CustomsControls" Text="ссылку" />
+                <controls:HyperLinkText NavigateURI="https://github.com/ErdtreeSentinel/WPF_CustomControls" Text="ссылку" />
             </StackPanel>
 
             <StackPanel
@@ -42,7 +42,8 @@
                 <controls:SettingsCard
                     Description="Это описание карточки, по умолчанию оно более 'акцентное', основным является название. Если нужно переопределить стиль для описани - можно задавать содержимое для описание внутри &lt;SettingsCard.Description&gt; через UI"
                     Header="Это сама обычная карточка"
-                    HeaderFontSize="16" Icon="&#xE724;">
+                    HeaderFontSize="16"
+                    Icon="&#xE724;">
                     <controls:SettingsCard.Content>
                         <Button Click="Button_Click" Style="{DynamicResource AccentButtonStyle}">Это кнопка содержимое</Button>
                     </controls:SettingsCard.Content>
